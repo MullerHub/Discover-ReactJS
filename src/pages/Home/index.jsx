@@ -22,14 +22,15 @@ export function Home() {
   }
 
   useEffect(() => {
-    fetch("https://api.github.com/users/mullerhub")
-    .then((response) => response.json())
-    .then((data) => {
+    async function asyncFetch() {
+      const response = await fetch("https://api.github.com/users/mullerhub")
+      const data = await response.json();
       setUser({
-      name: data.name,
-      avatar: data.avatar_url,
-    })
-    })
+            name: data.name,
+            avatar: data.avatar_url,
+          })
+    }
+      asyncFetch()
   }, []);
 
   return (
