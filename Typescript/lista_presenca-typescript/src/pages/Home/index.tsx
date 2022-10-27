@@ -1,50 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import './styles.css';
+import React, { useState, useEffect } from 'react'
+import './styles.css'
 
-import { Card, CardProps } from '../../components/Card';
+import { Card, CardProps } from '../../components/Card'
 
 type ProfileResponse = {
-  name: string;
-  avatar_url: string;
+  name: string
+  avatar_url: string
 }
 
 type User = {
-  name: string;
-  avatar: string;
+  name: string
+  avatar: string
 }
 
 export function Home() {
-  const [studentName, setStudentName] = useState('');
-  const [students, setStudents] = useState<CardProps[]>([]);
-  const [user, setUser] = useState<User>({} as User);
+  const [studentName, setStudentName] = useState('')
+  const [students, setStudents] = useState<CardProps[]>([])
+  const [user, setUser] = useState<User>({} as User)
 
   function handleAddStudent() {
     const newStudent = {
       name: studentName,
-      time: new Date().toLocaleTimeString("pt-br", {
+      time: new Date().toLocaleTimeString('pt-br', {
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
+        second: '2-digit'
       })
-    };
+    }
 
-    setStudents(prevState => [...prevState, newStudent]);
+    setStudents(prevState => [...prevState, newStudent])
   }
-
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://api.github.com/users/rodrigorgtic');
-      const data = await response.json() as ProfileResponse;
+      const response = await fetch('https://api.github.com/users/mullerhub')
+      const data = (await response.json()) as ProfileResponse
 
       setUser({
         name: data.name,
-        avatar: data.avatar_url,
-      });
+        avatar: data.avatar_url
+      })
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <div className="container">
@@ -67,15 +66,9 @@ export function Home() {
         Adicionar
       </button>
 
-      {
-        students.map(student => (
-          <Card
-            key={student.time}
-            name={student.name}
-            time={student.time}
-          />
-        ))
-      }
+      {students.map(student => (
+        <Card key={student.time} name={student.name} time={student.time} />
+      ))}
     </div>
   )
 }
