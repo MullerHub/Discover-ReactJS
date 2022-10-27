@@ -56,3 +56,16 @@ function printCoord(points: Point) {
 }
 
 printCoord({x: 101, y: 50})
+
+  // Outro exemplo de types com obhetos
+
+type User = {
+  name: string;
+  email: string;
+  age: number;
+  isAdmin: boolean;
+}
+
+let newUser: User;
+
+newUser.age
