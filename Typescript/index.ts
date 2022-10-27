@@ -32,3 +32,13 @@ userId = undefined;
 adminId = 1;
 adminId = '2';
 adminId = undefined;
+
+// Type Assertions 
+
+type UserResponse = {
+  id: number;
+  name: string;
+  avatar: string;
+}
+
+let userResponse = {} as UserResponse;
