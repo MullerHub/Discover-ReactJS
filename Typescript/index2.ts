@@ -35,3 +35,22 @@ let info: PlayerInfo = {
   nickname: 'birobirobiro',
   level: 50
 }
+
+// Interface
+
+interface IUser {
+  id: number
+  name: string,
+}
+
+// newUserI é utilizado o I no final para indicar que é da interface, sem o I daria conflito com outra variavel que foi criada por min anteriormente com o mesmo nome, mas tanto faz o nome só não pode ser duplicada
+
+let newUserI: IUser = {
+  id: 1,
+  name: "João"
+}
+
+function registerNewUser(newUser: User){
+  newUserI.id
+  newUserI.name
+}
