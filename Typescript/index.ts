@@ -68,4 +68,4 @@ type User = {
 
 let newUser: User;
 
-newUser.age
+// Exemplo, assim ira funcionar o auto-complete do .age ou .email ou .isAdmin... ->>> newUser.age
